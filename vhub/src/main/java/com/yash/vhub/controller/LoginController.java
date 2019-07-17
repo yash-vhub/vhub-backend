@@ -28,11 +28,9 @@ public class LoginController {
 			// with Authentication parameter
 			String authHeader = req.getHeader("Authorization");
 			String authString = new String(Base64.getDecoder().decode(authHeader.split("Basic ")[1]));
-			System.out.println("Authorization "+authString);
 			String[] auth = authString.split(":");
 			String email = auth[0];
 			String password = auth[1];
-			System.out.println("email "+email+" password "+password);
 			User user = userRepository.findOneByEmail(email);
 			if (user.comparePassword(password)) {
 				return user;
