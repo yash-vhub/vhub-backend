@@ -1,5 +1,6 @@
 package com.yash.vhub.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,10 +21,24 @@ public class Location {
 	
 	private String country;
 	
-	private String state;
+	@Column(name="state_or_province")
+	private String stateOrProvince;
 	
 	private String city;
 	
-	private String zip;
+	@Column(name="zip_or_postcode")
+	private String zipOrPostCode;
+
+	@Column(name="address_line_1")
+	private String addressLine1;
+	
+	@Column(name="address_line_2")
+	private String addressLine2;
+	
+	@Column(name="address_line_3")
+	private String addressLine3;
+	
+	@Column(name="address_line_4")
+	private String addressLine4;
 	
 }
