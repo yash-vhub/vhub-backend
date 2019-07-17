@@ -16,6 +16,7 @@ public class UserEventHandler {
 
 	@HandleBeforeCreate
 	public void handleBeforeUserCreate(User user) {
+		// TODO hash and salt password
 		user.setPassword("*");
 	}
 	
@@ -25,6 +26,7 @@ public class UserEventHandler {
 			User storedUser = userRepository.getOne(user.getId());
 			user.setPassword(storedUser.getPassword());
 		} else {
+			// TODO hash and salt password
 			user.setPassword("*");
 		}
 	}

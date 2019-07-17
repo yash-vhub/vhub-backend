@@ -59,6 +59,7 @@ public class User {
 	}
 	
 	public boolean comparePassword(String password) {
+		// TODO implement Spring Security and Compare Hashes
 		return this.password.equals(password);
 	}
 	

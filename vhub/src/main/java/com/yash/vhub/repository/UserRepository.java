@@ -9,4 +9,6 @@ import com.yash.vhub.domain.UserSummary;
 @RepositoryRestResource(excerptProjection=UserSummary.class)
 public interface UserRepository extends JpaRepository<User, Long> {
 
+	User findOneByEmail(String email);
+	
 }
