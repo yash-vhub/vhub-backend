@@ -14,11 +14,11 @@ public class UserEventHandler {
 	@Autowired
 	UserRepository userRepository;
 
-	@HandleBeforeCreate
-	public void handleBeforeUserCreate(User user) {
-		// TODO hash and salt password
-		user.setPassword("*");
-	}
+//	@HandleBeforeCreate
+//	public void handleBeforeUserCreate(User user) {
+//		System.out.println("in handleBeforeUserCreate");
+//		user.setPassword(User.PASSWORD_ENCODER.encode(user.getPassword()));
+//	}
 	
 	@HandleBeforeSave
 	public void handleBeforeUserSave(User user) {
@@ -26,8 +26,7 @@ public class UserEventHandler {
 			User storedUser = userRepository.getOne(user.getId());
 			user.setPassword(storedUser.getPassword());
 		} else {
-			// TODO hash and salt password
-			user.setPassword("*");
+			user.setPassword(User.PASSWORD_ENCODER.encode(user.getPassword()));
 		}
 	}
 }
