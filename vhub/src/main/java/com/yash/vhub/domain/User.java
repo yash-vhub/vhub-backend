@@ -1,5 +1,8 @@
 package com.yash.vhub.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -53,6 +59,23 @@ public class User {
 	@JoinColumn(name="location_id")
 	@Nullable
 	private Location location;
+	
+	@ManyToMany
+	@JoinTable(
+			name="vendor_users_jt",
+			joinColumns = {@JoinColumn(name="user_id")},
+			inverseJoinColumns = {@JoinColumn(name="vendor_id")}
+			)
+	private Set<Vendor> vendorUsers = new HashSet<>();
+	
+	@ManyToMany
+	@JoinTable(
+			name="user_roles",
+			joinColumns = {@JoinColumn(name="user_id")},
+			inverseJoinColumns = {@JoinColumn(name="role_id")}
+			)
+	private Set<Role> roles = new HashSet<>();
+	
 	
 	public void setPassword(String password) {
 		this.password = password;
