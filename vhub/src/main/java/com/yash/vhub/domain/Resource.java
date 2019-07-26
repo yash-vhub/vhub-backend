@@ -1,6 +1,8 @@
 package com.yash.vhub.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -42,11 +44,11 @@ public class Resource {
 
 	@ManyToMany
 	@JoinTable(
-			name="resource_request_skills_jt",
-			joinColumns = {@JoinColumn(name="resource_request_id")},
+			name="resource_skills_jt",
+			joinColumns = {@JoinColumn(name="resource_id")},
 			inverseJoinColumns = {@JoinColumn(name="skill_id")}
 			)
-	private Set<Skill> skills = new HashSet<>();
+	private List<Skill> skills = new ArrayList<>();
 	
 	
 }
