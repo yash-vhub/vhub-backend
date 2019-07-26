@@ -8,7 +8,6 @@ import org.springframework.data.rest.core.config.Projection;
 				User.class
 		})
 public interface UserSummary {
-	long getId();
 	String getEmail();
 	String getFirstName();
 	String getLastName();
