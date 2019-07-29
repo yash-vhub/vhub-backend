@@ -1,6 +1,7 @@
 package com.yash.vhub.repository;
 
-import java.util.List;
+import java.util.Set;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,10 +14,10 @@ import com.yash.vhub.domain.ResourceSummary;
 public interface ResourceRepository extends JpaRepository<Resource, Long> {
 
 	@Query("SELECT r FROM Resource r INNER JOIN r.skills s WHERE s.skill = :skill AND r.name LIKE %:name%")
-	List<Resource> findBySkillAndName(@Param("skill") String skill, @Param("name") String name);
+	Set<Resource> findBySkillAndName(@Param("skill") String skill, @Param("name") String name);
 	
 	@Query("SELECT r FROM Resource r INNER JOIN r.skills s WHERE s.skill = :skill")
-	List<Resource> findBySkill(@Param(value = "skill") String skill);
+	Set<Resource> findBySkill(@Param(value = "skill") String skill);
 	
-	List<Resource> findByNameContaining(String name);
+	Set<Resource> findByNameContaining(String name);
 }
