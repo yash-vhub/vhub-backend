@@ -1,8 +1,6 @@
 package com.yash.vhub.domain;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -48,7 +46,7 @@ public class Resource {
 			joinColumns = {@JoinColumn(name="resource_id")},
 			inverseJoinColumns = {@JoinColumn(name="skill_id")}
 			)
-	private List<Skill> skills = new ArrayList<>();
+	private Set<Skill> skills = new HashSet<>();
 	
 	
 }
